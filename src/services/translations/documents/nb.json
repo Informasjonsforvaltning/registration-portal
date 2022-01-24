@@ -1,0 +1,24 @@
+{
+  "catalogs": {
+    "title": "Alle kataloger",
+    "missingTitle": "Mangler tittel",
+    "missingCatalogs": {
+      "title": "Hei",
+      "ingress": "Det ser ikke ut til at du har fått tilgang til noen kataloger.",
+      "accessTitle": "Trenger du tilgang?",
+      "accessText": "Les mer om hvordan du får tilgang her"
+    },
+    "datasets": "Datasettkatalog",
+    "dataservices": "API-katalog",
+    "concepts": "Begrepskatalog",
+    "protocol": "Behandlingsoversikt",
+    "type": {
+      "datasets": "datasettbeskrivelser",
+      "dataservices": "API-beskrivelser",
+      "concepts": "begreper",
+      "protocol": "behandlingsaktiviteter"
+    }
+  },
+  "noAccessCatalog": "Du har ikke tilgang til denne katalogen",
+  "none": "Ingen"
+}
