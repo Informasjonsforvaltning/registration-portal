@@ -4,11 +4,11 @@ import env from '../../../env';
 
 import AuthService from '../../auth';
 
-const { CONCEPT_REGISTRATION_API_HOST } = env;
+const { CONCEPT_CATALOG_BASE_URI } = env;
 
 export const getConcepts = async orgnr =>
   axios
-    .get(`${CONCEPT_REGISTRATION_API_HOST}/begreper`, {
+    .get(`${CONCEPT_CATALOG_BASE_URI}/begreper`, {
       params: { orgNummer: orgnr },
       headers: {
         Authorization: await AuthService.getAuthorizationHeader(),
