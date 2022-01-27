@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-import { registrationApiGet } from '../../../../services/api/registration-api/host';
+import { datasetCatalogGet } from '../../../../services/api/dataset-catalog/host';
 import { reduxFsaThunk } from '../../../../lib/redux-fsa-thunk';
-import { catalogsPathWithSize } from '../../../../services/api/registration-api/catalogs';
+import { datasetCatalogsPathWithSize } from '../../../../services/api/dataset-catalog/catalogs';
 
 export const CATALOGS_REQUEST = 'CATALOGS_REQUEST';
 export const CATALOGS_SUCCESS = 'CATALOGS_SUCCESS';
@@ -20,7 +20,7 @@ function shouldFetch(metaState) {
 export const fetchCatalogsIfNeeded = () => (dispatch, getState) =>
   shouldFetch(_.get(getState(), 'catalogs')) &&
   dispatch(
-    reduxFsaThunk(() => registrationApiGet(catalogsPathWithSize), {
+    reduxFsaThunk(() => datasetCatalogGet(datasetCatalogsPathWithSize), {
       onBeforeStart: { type: CATALOGS_REQUEST },
       onSuccess: { type: CATALOGS_SUCCESS },
       onError: { type: CATALOGS_FAILURE }

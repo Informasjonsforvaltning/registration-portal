@@ -3,14 +3,14 @@ import axios from 'axios';
 import env from '../../../env';
 
 import AuthService from '../../auth';
-import { catalogPath } from './catalogs';
+import { datasetCatalogPath } from './catalogs';
 
-const { FDK_REGISTRATION_BASE_URI } = env;
+const { DATASET_CATALOG_BASE_URI } = env;
 
-export const registrationApi = async (method, path, data) => {
+export const datasetCatalog = async (method, path, data) => {
   const Authorization = await AuthService.getAuthorizationHeader();
   const response = await axios({
-    url: `${FDK_REGISTRATION_BASE_URI}${path}`,
+    url: `${DATASET_CATALOG_BASE_URI}${path}`,
     method,
     data,
     headers: {
@@ -22,9 +22,9 @@ export const registrationApi = async (method, path, data) => {
   return response.data;
 };
 
-export const registrationApiGet = path => registrationApi('GET', path);
+export const datasetCatalogGet = path => datasetCatalog('GET', path);
 
 export const getDatasetsCount = catalogId =>
-  registrationApiGet(`${catalogPath(catalogId)}/datasets?size=1000`).then(
+  datasetCatalogGet(`${datasetCatalogPath(catalogId)}/datasets?size=1000`).then(
     datasets => datasets?._embedded?.datasets?.length ?? 0
   );

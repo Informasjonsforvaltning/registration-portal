@@ -5,8 +5,8 @@ import { resolve } from 'react-resolver';
 
 import env from '../../env';
 
-import { getDatasetsCount } from '../../services/api/registration-api/host';
-import { getConceptCount } from '../../services/api/concept-registration-api/host';
+import { getDatasetsCount } from '../../services/api/dataset-catalog/host';
+import { getConceptCount } from '../../services/api/concept-catalog/host';
 import { getRecordsCount } from '../../services/api/records-registration-api/host';
 import { getDataServicesCount } from '../../services/api/dataservice-catalog/host';
 
