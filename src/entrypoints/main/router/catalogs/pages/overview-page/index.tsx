@@ -7,7 +7,7 @@ import Breadcrumbs, { Breadcrumb } from '@fellesdatakatalog/breadcrumbs';
 import env from '../../../../../../env';
 
 import {
-  Enum_Servicemessage_Channel,
+  Enum_Servicemessage_Environment,
   ServiceMessage,
   useGetServiceMessagesQuery
 } from '../../../../../../services/api/strapi/generated/graphql';
@@ -37,8 +37,10 @@ const OverviewPage: FC<Props> = ({
 }) => {
   const { data } = useGetServiceMessagesQuery({
     variables: {
-      channel: Enum_Servicemessage_Channel.Registreringsportal,
-      today: new Date(new Date().toUTCString())
+      today: new Date(new Date().toUTCString()),
+      env: window.location.hostname.match('localhost|staging')
+        ? Enum_Servicemessage_Environment.Staging
+        : Enum_Servicemessage_Environment.Production
     }
   });
   const serviceMessages = data?.serviceMessages as ServiceMessage[];
