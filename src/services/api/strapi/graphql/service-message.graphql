@@ -1,8 +1,9 @@
-query GetServiceMessages($channel: String, $today: DateTime) {
+query GetServiceMessages($today: DateTime, $env: String) {
     serviceMessages (where: {
+        channel_registreringportal: true
+        environment: $env
         _or: [
             {
-                channel: $channel
                 valid_from_lte: $today
                 valid_to_gte: $today
             },
@@ -17,9 +18,10 @@ query GetServiceMessages($channel: String, $today: DateTime) {
         valid_from
         valid_to
         message_type
-        channel
         short_description
-        description
+        description,
+        environment
+        channel_registreringportal
     }
 }
 
