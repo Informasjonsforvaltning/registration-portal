@@ -20,5 +20,8 @@
     }
   },
   "noAccessCatalog": "Du har ikke tilgang til denne katalogen",
-  "none": "Ingen"
+  "none": "Ingen",
+  "serviceMessagesPage": {
+    "goToDetailsPage": "Se detaljert driftsmelding for mer informasjon."
+  }
 }
