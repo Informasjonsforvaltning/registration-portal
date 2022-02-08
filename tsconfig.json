@@ -1,48 +1,20 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "jsx": "react",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "outDir": "dist",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
-    "downlevelIteration": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "strictPropertyInitialization": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "types": [
-      "node",
-      "jest"
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "src/types/*"
-    ]
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/__tests__/**/*"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
