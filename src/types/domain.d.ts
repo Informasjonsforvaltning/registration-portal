@@ -22,3 +22,8 @@ export interface ConceptCatalog {
   id: string;
   antallBegrep: number;
 }
+
+export interface DataServiceCatalog {
+  id: string;
+  dataServiceCount: number;
+}

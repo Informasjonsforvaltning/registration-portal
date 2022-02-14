@@ -20,6 +20,9 @@ import withCatalogs, {
 import withConceptCatalogs, {
   Props as ConceptCatalogsProps
 } from '../../../../../../components/with-concept-catalogs';
+import withDataServiceCatalogs, {
+  Props as DataServiceCatalogsProps
+} from '../../../../../../components/with-dataservice-catalogs';
 
 import Translation from '../../../../../../components/translation';
 import Catalog from '../../../../../../components/catalog';
@@ -30,14 +33,20 @@ import SC from './styled';
 
 const { FDK_REGISTRATION_BASE_URI } = env;
 
-interface Props extends AuthProps, CatalogsProps, ConceptCatalogsProps {}
+interface Props
+  extends AuthProps,
+    CatalogsProps,
+    ConceptCatalogsProps,
+    DataServiceCatalogsProps {}
 
 const OverviewPage: FC<Props> = ({
   catalogs,
   conceptCatalogs,
+  dataServiceCatalogs,
   isLoadingCatalogs,
   catalogsActions: { listCatalogsRequested: listCatalogs },
   conceptCatalogsActions: { conceptCatalogsRequested },
+  dataServiceCatalogsActions: { dataServiceCatalogsRequested },
   authService
 }) => {
   const { data } = useGetServiceMessagesQuery({
@@ -55,6 +64,7 @@ const OverviewPage: FC<Props> = ({
   useEffect(() => {
     listCatalogs();
     conceptCatalogsRequested();
+    dataServiceCatalogsRequested();
 
     setIsMounted(true);
 
@@ -73,6 +83,13 @@ const OverviewPage: FC<Props> = ({
       catalog => catalog.id === catalogId
     );
     return conceptCatalog?.antallBegrep || 0;
+  };
+
+  const dataServiceCatalogSize = (catalogId: string) => {
+    const dataServiceCatalog = dataServiceCatalogs?.find(
+      catalog => catalog.id === catalogId
+    );
+    return dataServiceCatalog?.dataServiceCount || 0;
   };
 
   return (
@@ -138,6 +155,7 @@ const OverviewPage: FC<Props> = ({
                   key={`dataservices-${id}`}
                   catalogId={id}
                   type='dataservices'
+                  itemsCount={dataServiceCatalogSize(id)}
                   disabled={
                     !authService.hasSystemAdminPermission() &&
                     !hasAcceptedTerms(id)
@@ -198,5 +216,6 @@ export default compose<FC>(
   memo,
   withAuth,
   withCatalogs,
-  withConceptCatalogs
+  withConceptCatalogs,
+  withDataServiceCatalogs
 )(OverviewPage);
