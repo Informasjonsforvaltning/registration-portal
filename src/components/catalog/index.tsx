@@ -6,7 +6,6 @@ import { resolve } from 'react-resolver';
 import env from '../../env';
 
 import { getRecordsCount } from '../../services/api/records-registration-api/host';
-import { getDataServicesCount } from '../../services/api/dataservice-catalog/host';
 
 import CatalogItem from '../catalog-item';
 
@@ -64,7 +63,6 @@ const Catalog: FC<Props> = ({
   );
 };
 
-const memoizedGetDataServicesCount = memoize(getDataServicesCount);
 const memoizedGetRecordsCount = memoize(getRecordsCount);
 
 const mapProps = {
@@ -74,7 +72,7 @@ const mapProps = {
         return itemsCount;
       }
       case 'dataservices': {
-        return memoizedGetDataServicesCount(catalogId);
+        return itemsCount;
       }
       case 'concepts': {
         return itemsCount;
