@@ -27,3 +27,8 @@ export interface DataServiceCatalog {
   id: string;
   dataServiceCount: number;
 }
+
+export interface OrganizationRecordCount {
+  organizationId: string;
+  recordCount: number;
+}

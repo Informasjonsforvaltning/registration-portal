@@ -1,11 +1,7 @@
 import React, { memo, FC } from 'react';
 import { compose } from 'redux';
-import memoize from 'lodash/memoize';
-import { resolve } from 'react-resolver';
 
 import env from '../../env';
-
-import { getRecordsCount } from '../../services/api/records-registration-api/host';
 
 import CatalogItem from '../catalog-item';
 
@@ -63,27 +59,4 @@ const Catalog: FC<Props> = ({
   );
 };
 
-const memoizedGetRecordsCount = memoize(getRecordsCount);
-
-const mapProps = {
-  itemsCount: ({ type, catalogId, itemsCount }: any) => {
-    switch (type) {
-      case 'datasets': {
-        return itemsCount;
-      }
-      case 'dataservices': {
-        return itemsCount;
-      }
-      case 'concepts': {
-        return itemsCount;
-      }
-      case 'protocol': {
-        return memoizedGetRecordsCount(catalogId);
-      }
-      default:
-        return itemsCount;
-    }
-  }
-};
-
-export default compose<FC<ExternalProps>>(memo, resolve(mapProps))(Catalog);
+export default compose<FC<ExternalProps>>(memo)(Catalog);

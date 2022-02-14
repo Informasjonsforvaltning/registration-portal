@@ -23,6 +23,9 @@ import withConceptCatalogs, {
 import withDataServiceCatalogs, {
   Props as DataServiceCatalogsProps
 } from '../../../../../../components/with-dataservice-catalogs';
+import withRecordCounts, {
+  Props as RecordCountsProps
+} from '../../../../../../components/with-record-counts';
 
 import Translation from '../../../../../../components/translation';
 import Catalog from '../../../../../../components/catalog';
@@ -37,16 +40,19 @@ interface Props
   extends AuthProps,
     CatalogsProps,
     ConceptCatalogsProps,
-    DataServiceCatalogsProps {}
+    DataServiceCatalogsProps,
+    RecordCountsProps {}
 
 const OverviewPage: FC<Props> = ({
   catalogs,
   conceptCatalogs,
   dataServiceCatalogs,
+  recordCounts,
   isLoadingCatalogs,
   catalogsActions: { listCatalogsRequested: listCatalogs },
   conceptCatalogsActions: { conceptCatalogsRequested },
   dataServiceCatalogsActions: { dataServiceCatalogsRequested },
+  recordCountsActions: { recordCountsRequested },
   authService
 }) => {
   const { data } = useGetServiceMessagesQuery({
@@ -65,6 +71,7 @@ const OverviewPage: FC<Props> = ({
     listCatalogs();
     conceptCatalogsRequested();
     dataServiceCatalogsRequested();
+    recordCountsRequested();
 
     setIsMounted(true);
 
@@ -90,6 +97,13 @@ const OverviewPage: FC<Props> = ({
       catalog => catalog.id === catalogId
     );
     return dataServiceCatalog?.dataServiceCount || 0;
+  };
+
+  const organizationRecordCount = (organizationId: string) => {
+    const organizationRecords = recordCounts?.find(
+      org => org.organizationId === organizationId
+    );
+    return organizationRecords?.recordCount || 0;
   };
 
   return (
@@ -175,6 +189,7 @@ const OverviewPage: FC<Props> = ({
                   key={`protocol-${id}`}
                   catalogId={id}
                   type='protocol'
+                  itemsCount={organizationRecordCount(id)}
                   disabled={
                     !authService.hasSystemAdminPermission() &&
                     !hasAcceptedTerms(id)
@@ -217,5 +232,6 @@ export default compose<FC>(
   withAuth,
   withCatalogs,
   withConceptCatalogs,
-  withDataServiceCatalogs
+  withDataServiceCatalogs,
+  withRecordCounts
 )(OverviewPage);
