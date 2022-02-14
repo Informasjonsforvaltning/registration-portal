@@ -7,6 +7,7 @@ export interface Catalog {
   issued: Date;
   modified: Date;
   language: string;
+  datasetCount: number;
 }
 
 export interface Publisher {

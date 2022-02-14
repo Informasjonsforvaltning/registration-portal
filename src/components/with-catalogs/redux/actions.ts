@@ -6,12 +6,9 @@ import {
 
 import type { Catalog } from '../../../types';
 
-export function listCatalogsRequested(size: number) {
+export function listCatalogsRequested() {
   return {
-    type: LIST_CATALOGS_REQUESTED,
-    payload: {
-      size
-    }
+    type: LIST_CATALOGS_REQUESTED
   };
 }
 

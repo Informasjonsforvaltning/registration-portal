@@ -12,9 +12,7 @@ import type { Catalog } from '../../../types';
 
 const { FDK_REGISTRATION_BASE_URI } = env;
 
-function* listCatalogsRequested({
-  payload: { size }
-}: ReturnType<typeof actions.listCatalogsRequested>) {
+function* listCatalogsRequested() {
   try {
     const authorization: string = yield call([
       AuthService,
@@ -25,7 +23,6 @@ function* listCatalogsRequested({
       axios.get,
       `${FDK_REGISTRATION_BASE_URI}/catalogs`,
       {
-        params: { size },
         headers: {
           authorization,
           accept: 'application/json',
