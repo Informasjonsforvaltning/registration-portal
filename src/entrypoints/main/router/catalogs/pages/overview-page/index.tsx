@@ -17,6 +17,9 @@ import { withAuth, Props as AuthProps } from '../../../../../../providers/auth';
 import withCatalogs, {
   Props as CatalogsProps
 } from '../../../../../../components/with-catalogs';
+import withConceptCatalogs, {
+  Props as ConceptCatalogsProps
+} from '../../../../../../components/with-concept-catalogs';
 
 import Translation from '../../../../../../components/translation';
 import Catalog from '../../../../../../components/catalog';
@@ -27,12 +30,14 @@ import SC from './styled';
 
 const { FDK_REGISTRATION_BASE_URI } = env;
 
-interface Props extends AuthProps, CatalogsProps {}
+interface Props extends AuthProps, CatalogsProps, ConceptCatalogsProps {}
 
 const OverviewPage: FC<Props> = ({
   catalogs,
+  conceptCatalogs,
   isLoadingCatalogs,
   catalogsActions: { listCatalogsRequested: listCatalogs },
+  conceptCatalogsActions: { conceptCatalogsRequested },
   authService
 }) => {
   const { data } = useGetServiceMessagesQuery({
@@ -49,6 +54,7 @@ const OverviewPage: FC<Props> = ({
 
   useEffect(() => {
     listCatalogs();
+    conceptCatalogsRequested();
 
     setIsMounted(true);
 
@@ -61,6 +67,13 @@ const OverviewPage: FC<Props> = ({
 
   const hasAcceptedTerms = (id: string) =>
     authService.hasAcceptedLatestTermsAndConditions(id);
+
+  const conceptCatalogSize = (catalogId: string) => {
+    const conceptCatalog = conceptCatalogs?.find(
+      catalog => catalog.id === catalogId
+    );
+    return conceptCatalog?.antallBegrep || 0;
+  };
 
   return (
     <>
@@ -134,6 +147,7 @@ const OverviewPage: FC<Props> = ({
                   key={`concepts-${id}`}
                   catalogId={id}
                   type='concepts'
+                  itemsCount={conceptCatalogSize(id)}
                   disabled={
                     !authService.hasSystemAdminPermission() &&
                     !hasAcceptedTerms(id)
@@ -180,4 +194,9 @@ const OverviewPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withAuth, withCatalogs)(OverviewPage);
+export default compose<FC>(
+  memo,
+  withAuth,
+  withCatalogs,
+  withConceptCatalogs
+)(OverviewPage);
