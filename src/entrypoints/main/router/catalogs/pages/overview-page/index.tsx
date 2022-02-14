@@ -48,7 +48,7 @@ const OverviewPage: FC<Props> = ({
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    listCatalogs(1000);
+    listCatalogs();
 
     setIsMounted(true);
 
@@ -73,7 +73,7 @@ const OverviewPage: FC<Props> = ({
         </Breadcrumb>
       </Breadcrumbs>
       <SC.Page>
-        {catalogs?.map(({ id, publisher }) => (
+        {catalogs?.map(({ id, publisher, datasetCount }) => (
           <div key={id} className='row mb-2 mb-md-5'>
             <div className='col-12'>
               <div className='mb-3'>
@@ -115,6 +115,7 @@ const OverviewPage: FC<Props> = ({
                   key={`datasets-${id}`}
                   catalogId={id}
                   type='datasets'
+                  itemsCount={datasetCount}
                   disabled={
                     !authService.hasSystemAdminPermission() &&
                     !hasAcceptedTerms(id)
