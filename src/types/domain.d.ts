@@ -18,3 +18,7 @@ export interface Publisher {
   prefLabel: Record<string, string>;
   allowDelegatedRegistration?: boolean;
 }
+export interface ConceptCatalog {
+  id: string;
+  antallBegrep: number;
+}
