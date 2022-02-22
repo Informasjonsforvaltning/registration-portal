@@ -7,6 +7,7 @@ export interface Catalog {
   issued: Date;
   modified: Date;
   language: string;
+  datasetCount: number;
 }
 
 export interface Publisher {
@@ -16,4 +17,18 @@ export interface Publisher {
   orgPath: string;
   prefLabel: Record<string, string>;
   allowDelegatedRegistration?: boolean;
+}
+export interface ConceptCatalog {
+  id: string;
+  antallBegrep: number;
+}
+
+export interface DataServiceCatalog {
+  id: string;
+  dataServiceCount: number;
+}
+
+export interface OrganizationRecordCount {
+  organizationId: string;
+  recordCount: number;
 }

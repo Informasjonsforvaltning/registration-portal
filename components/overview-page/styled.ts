@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme, Colour } from '@fellesdatakatalog/theme';
 import LinkBase from '@fellesdatakatalog/link';
 
-import BannerBase from '../components/banner';
+import BannerBase from '../banner';
 
 const Breadcrumbs = styled.nav`
   margin-top: -${theme.spacing('S16')};

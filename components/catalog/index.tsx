@@ -1,26 +1,26 @@
 import React, { memo, FC } from 'react';
 import { compose } from 'redux';
-import memoize from 'lodash/memoize';
-import { resolve } from 'react-resolver';
 
-import { getDatasetsCount } from '../../services/api/dataset-catalog/host';
-import { getConceptCount } from '../../services/api/concept-catalog/host';
-import { getRecordsCount } from '../../services/api/records-registration-api/host';
-import { getDataServicesCount } from '../../services/api/dataservice-catalog/host';
+import env from '../../env';
 
 import CatalogItem from '../catalog-item';
 
+const {
+  FDK_REGISTRATION_BASE_URI,
+  DATASERVICE_CATALOG_BASE_URI,
+  CONCEPT_REGISTRATION_HOST,
+  RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
+} = env;
 
 interface ExternalProps {
   catalogId: string;
   type: string;
   isReadOnly?: boolean;
+  itemsCount?: number;
   disabled: boolean;
 }
 
-interface Props extends ExternalProps {
-  itemsCount?: number;
-}
+interface Props extends ExternalProps {}
 
 const Catalog: FC<Props> = ({
   catalogId,
@@ -32,16 +32,16 @@ const Catalog: FC<Props> = ({
   const getLinkUri = () => {
     switch (type) {
       case 'dataservices': {
-        return `${process.env.DATASERVICE_CATALOG_BASE_URI}/${catalogId}`;
+        return `${DATASERVICE_CATALOG_BASE_URI}/${catalogId}`;
       }
       case 'concepts': {
-        return `${process.env.CONCEPT_REGISTRATION_HOST}/${catalogId}`;
+        return `${CONCEPT_REGISTRATION_HOST}/${catalogId}`;
       }
       case 'protocol': {
-        return `${process.env.RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI}/${catalogId}`;
+        return `${RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI}/${catalogId}`;
       }
       default:
-        return `${process.env.FDK_REGISTRATION_BASE_URI}/catalogs/${catalogId}/${type}`;
+        return `${FDK_REGISTRATION_BASE_URI}/catalogs/${catalogId}/${type}`;
     }
   };
 
@@ -59,30 +59,4 @@ const Catalog: FC<Props> = ({
   );
 };
 
-const memoizedGetDatasetsCount = memoize(getDatasetsCount);
-const memoizedGetDataServicesCount = memoize(getDataServicesCount);
-const memoizedGetConceptCount = memoize(getConceptCount);
-const memoizedGetRecordsCount = memoize(getRecordsCount);
-
-const mapProps = {
-  itemsCount: ({ type, catalogId, itemsCount }: any) => {
-    switch (type) {
-      case 'datasets': {
-        return memoizedGetDatasetsCount(catalogId);
-      }
-      case 'dataservices': {
-        return memoizedGetDataServicesCount(catalogId);
-      }
-      case 'concepts': {
-        return memoizedGetConceptCount(catalogId);
-      }
-      case 'protocol': {
-        return memoizedGetRecordsCount(catalogId);
-      }
-      default:
-        return itemsCount;
-    }
-  }
-};
-
-export default compose<FC<ExternalProps>>(memo, resolve(mapProps))(Catalog);
+export default compose<FC<ExternalProps>>(memo)(Catalog);

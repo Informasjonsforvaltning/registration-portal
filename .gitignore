@@ -4,6 +4,7 @@
 .idea
 .env
 .envrc
+.next
 
 npm-debug.log
 

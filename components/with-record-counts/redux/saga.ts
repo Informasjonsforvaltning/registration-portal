@@ -3,18 +3,15 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import env from '../../../env';
 
-import { LIST_CATALOGS_REQUESTED } from './actions-types';
+import { RECORD_COUNTS_REQUESTED } from './actions-types';
 import * as actions from './actions';
 
-import type { Catalog } from '../../../types';
+import type { OrganizationRecordCount } from '../../../types';
 import { getSession } from 'next-auth/react';
 
-const { FDK_REGISTRATION_BASE_URI } = env;
+const { RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI } = env;
 
-
-function* listCatalogsRequested({
-  payload: { size }
-}: ReturnType<typeof actions.listCatalogsRequested>) {
+function* recordCountsRequested() {
   try {
     const session = yield call(getSession)
 
@@ -22,9 +19,8 @@ function* listCatalogsRequested({
 
     const { data } = yield call(
       axios.get,
-      `${FDK_REGISTRATION_BASE_URI}/catalogs`,
+      `${RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI}/api/organizations`,
       {
-        params: { size },
         headers: {
           authorization,
           accept: 'application/json',
@@ -33,22 +29,22 @@ function* listCatalogsRequested({
       }
     );
 
-    if (Array.isArray(data?._embedded.catalogs)) {
+    if (Array.isArray(data)) {
       yield put(
-        actions.listCatalogsSucceeded(data._embedded.catalogs as Catalog[])
+        actions.recordCountsSucceeded(data as OrganizationRecordCount[])
       );
     } else {
       yield put(
-        actions.listCatalogsFailed(
-          'An error occurred during an attempt to list catalogs.'
+        actions.recordCountsFailed(
+          'An error occurred during an attempt to get organization record counts.'
         )
       );
     }
   } catch (error: any) {
-    yield put(actions.listCatalogsFailed(error));
+    yield put(actions.recordCountsFailed(error));
   }
 }
 
 export default function* saga() {
-  yield all([takeLatest(LIST_CATALOGS_REQUESTED, listCatalogsRequested)]);
+  yield all([takeLatest(RECORD_COUNTS_REQUESTED, recordCountsRequested)]);
 }

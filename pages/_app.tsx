@@ -1,41 +1,49 @@
-import type { AppProps } from 'next/app'
-import './global.css'
+import React, { FC } from "react";
+import { SessionProvider } from "next-auth/react";
+import { CookiesProvider } from "react-cookie";
+import { Provider as ReduxProvider } from "react-redux";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
-import React, { FC } from 'react';
-import { CookiesProvider } from 'react-cookie';
-import { Provider as ReduxProvider } from 'react-redux';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import env from "../env";
 
-import env from '../env';
+import TranslationsProvider from "../providers/translations";
 
-import AuthProvider from '../providers/auth';
-import TranslationsProvider from '../providers/translations';
+import store from "../redux/store";
+import { ThemeProvider } from "styled-components";
+import {
+  DefaultTheme,
+} from "@fellesdatakatalog/theme";
+import { AppProps } from "next/app";
 
-import store from '../redux/store';
+import GlobalStyle from '../styles';
 
 const { FDK_CMS_BASE_URI } = env;
 
 const client = new ApolloClient({
   uri: `${FDK_CMS_BASE_URI}/graphql`,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
-console.log(process.env);
 
 
-const App = ({ Component, pageProps }: AppProps) => (
+const App: FC<AppProps> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => (
+  <SessionProvider session={session}>
     <ApolloProvider client={client}>
       <CookiesProvider>
-        <AuthProvider>
-      hello worlds
+        <GlobalStyle />
+        <ThemeProvider theme={DefaultTheme}>
           <TranslationsProvider>
             <ReduxProvider store={store}>
               <Component {...pageProps} />
             </ReduxProvider>
           </TranslationsProvider>
-        </AuthProvider>
+        </ThemeProvider>
       </CookiesProvider>
     </ApolloProvider>
+  </SessionProvider>
 );
 
 export default App;

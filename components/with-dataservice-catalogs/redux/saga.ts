@@ -3,18 +3,15 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import env from '../../../env';
 
-import { LIST_CATALOGS_REQUESTED } from './actions-types';
+import { DATA_SERVICE_CATALOGS_REQUESTED } from './actions-types';
 import * as actions from './actions';
 
-import type { Catalog } from '../../../types';
+import type { DataServiceCatalog } from '../../../types';
 import { getSession } from 'next-auth/react';
 
-const { FDK_REGISTRATION_BASE_URI } = env;
+const { DATASERVICE_CATALOG_BASE_URI } = env;
 
-
-function* listCatalogsRequested({
-  payload: { size }
-}: ReturnType<typeof actions.listCatalogsRequested>) {
+function* dataServiceCatalogsRequested() {
   try {
     const session = yield call(getSession)
 
@@ -22,9 +19,8 @@ function* listCatalogsRequested({
 
     const { data } = yield call(
       axios.get,
-      `${FDK_REGISTRATION_BASE_URI}/catalogs`,
+      `${DATASERVICE_CATALOG_BASE_URI}/catalogs`,
       {
-        params: { size },
         headers: {
           authorization,
           accept: 'application/json',
@@ -33,22 +29,24 @@ function* listCatalogsRequested({
       }
     );
 
-    if (Array.isArray(data?._embedded.catalogs)) {
+    if (Array.isArray(data)) {
       yield put(
-        actions.listCatalogsSucceeded(data._embedded.catalogs as Catalog[])
+        actions.dataServiceCatalogsSucceeded(data as DataServiceCatalog[])
       );
     } else {
       yield put(
-        actions.listCatalogsFailed(
-          'An error occurred during an attempt to list catalogs.'
+        actions.dataServiceCatalogsFailed(
+          'An error occurred during an attempt to get data service catalogs.'
         )
       );
     }
   } catch (error: any) {
-    yield put(actions.listCatalogsFailed(error));
+    yield put(actions.dataServiceCatalogsFailed(error));
   }
 }
 
 export default function* saga() {
-  yield all([takeLatest(LIST_CATALOGS_REQUESTED, listCatalogsRequested)]);
+  yield all([
+    takeLatest(DATA_SERVICE_CATALOGS_REQUESTED, dataServiceCatalogsRequested)
+  ]);
 }

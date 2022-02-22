@@ -6,11 +6,10 @@ import createSagaMiddleware from 'redux-saga';
 import RootReducer from './reducer';
 import RootSaga from './saga';
 
-import AuthService from '../services/auth';
 
 const saga = createSagaMiddleware({
   context: {
-    auth: AuthService
+    // TODO: Auth
   }
 });
 
