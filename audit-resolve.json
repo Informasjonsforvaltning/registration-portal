@@ -74,6 +74,71 @@
       "decision": "ignore",
       "madeAt": 1643116751325,
       "expiresAt": 1645708727772
+    },
+    "1038674|showdown>yargs>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750715864,
+      "expiresAt": 1649342708281
+    },
+    "1038674|showdown>yargs>cliui>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750715864,
+      "expiresAt": 1649342708281
+    },
+    "1038674|showdown>yargs>cliui>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750715864,
+      "expiresAt": 1649342708281
+    },
+    "1038749|@fellesdatakatalog/internal-footer>@fellesdatakatalog/skatteetaten-frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1646750723777,
+      "expiresAt": 1649342708281
+    },
+    "1038674|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727086,
+      "expiresAt": 1649342708281
+    },
+    "1038674|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727086,
+      "expiresAt": 1649342708281
+    },
+    "1038674|@graphql-codegen/cli>listr>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727086,
+      "expiresAt": 1649342708281
+    },
+    "1038674|commitizen>inquirer>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727087,
+      "expiresAt": 1649342708281
+    },
+    "1038674|cz-conventional-changelog>commitizen>inquirer>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727087,
+      "expiresAt": 1649342708281
+    },
+    "1038674|commitizen>inquirer>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727087,
+      "expiresAt": 1649342708281
+    },
+    "1038674|cz-conventional-changelog>commitizen>inquirer>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1646750727087,
+      "expiresAt": 1649342708281
+    },
+    "1038696|react-svg-loader>react-svg-core>svgo>css-select>nth-check": {
+      "decision": "ignore",
+      "madeAt": 1646750730094,
+      "expiresAt": 1649342708281
+    },
+    "1039238|@fellesdatakatalog/internal-footer>@fellesdatakatalog/skatteetaten-frontend-components>react-i18next>html-parse-stringify2": {
+      "decision": "ignore",
+      "madeAt": 1646750734766,
+      "expiresAt": 1649342708281
     }
   },
   "rules": {},
