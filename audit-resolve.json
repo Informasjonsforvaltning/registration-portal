@@ -164,6 +164,41 @@
       "decision": "ignore",
       "madeAt": 1646910161236,
       "expiresAt": 1649502145861
+    },
+    "1067300|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1649768276547,
+      "expiresAt": 1652360267773
+    },
+    "1067300|@graphql-codegen/cli>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1649768276547,
+      "expiresAt": 1652360267773
+    },
+    "1067300|@graphql-codegen/cli>listr>listr-update-renderer>log-update>wrap-ansi>string-width>strip-ansi>ansi-regex": {
+      "decision": "ignore",
+      "madeAt": 1649768276547,
+      "expiresAt": 1652360267773
+    },
+    "1067342|commitizen>minimist": {
+      "decision": "ignore",
+      "madeAt": 1649768278494,
+      "expiresAt": 1652360267773
+    },
+    "1067342|cz-conventional-changelog>commitizen>minimist": {
+      "decision": "ignore",
+      "madeAt": 1649768278494,
+      "expiresAt": 1652360267773
+    },
+    "1067654|react-svg-loader>react-svg-core>svgo>css-select>nth-check": {
+      "decision": "ignore",
+      "madeAt": 1649768280739,
+      "expiresAt": 1652360267773
+    },
+    "1069972|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>moment": {
+      "decision": "ignore",
+      "madeAt": 1649768282150,
+      "expiresAt": 1652360267773
     }
   },
   "rules": {},
