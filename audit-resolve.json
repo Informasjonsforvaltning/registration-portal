@@ -199,6 +199,16 @@
       "decision": "ignore",
       "madeAt": 1649768282150,
       "expiresAt": 1652360267773
+    },
+    "1070206|webpack-dev-server>portfinder>async": {
+      "decision": "ignore",
+      "madeAt": 1651842912342,
+      "expiresAt": 1654434904476
+    },
+    "1070245|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>moment": {
+      "decision": "ignore",
+      "madeAt": 1651842914614,
+      "expiresAt": 1654434904476
     }
   },
   "rules": {},
