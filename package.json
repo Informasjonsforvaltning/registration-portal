@@ -71,7 +71,7 @@
     "designsystemet": "git+https://git@github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
     "font-awesome": "^4.7.0",
     "graphql": "^15.7.1",
-    "immutable": "^4.0.0-rc.14",
+    "immutable": "^4.1.0",
     "is-url": "^1.2.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
