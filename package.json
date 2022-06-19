@@ -70,7 +70,7 @@
     "date-fns": "^2.28.0",
     "designsystemet": "git+https://git@github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
     "font-awesome": "^4.7.0",
-    "graphql": "^15.7.1",
+    "graphql": "^16.5.0",
     "immutable": "^4.1.0",
     "is-url": "^1.2.2",
     "lodash": "^4.17.21",
