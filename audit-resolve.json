@@ -209,6 +209,51 @@
       "decision": "ignore",
       "madeAt": 1651842914614,
       "expiresAt": 1654434904476
+    },
+    "1070415|react-svg-loader>react-svg-core>svgo>css-select>nth-check": {
+      "decision": "ignore",
+      "madeAt": 1658748313381,
+      "expiresAt": 1661340308057
+    },
+    "1081008|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>moment": {
+      "decision": "ignore",
+      "madeAt": 1658748314577,
+      "expiresAt": 1661340308057
+    },
+    "1081480|node-sass>sass-graph>scss-tokenizer": {
+      "decision": "ignore",
+      "madeAt": 1658748315703,
+      "expiresAt": 1661340308057
+    },
+    "1081677|@graphql-codegen/cli>cross-undici-fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
+    },
+    "1081677|@graphql-codegen/cli>@graphql-tools/apollo-engine-loader>@whatwg-node/fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
+    },
+    "1081677|@graphql-codegen/cli>@graphql-tools/prisma-loader>@graphql-tools/url-loader>@whatwg-node/fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
+    },
+    "1081697|@graphql-codegen/cli>cross-undici-fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
+    },
+    "1081697|@graphql-codegen/cli>@graphql-tools/apollo-engine-loader>@whatwg-node/fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
+    },
+    "1081697|@graphql-codegen/cli>@graphql-tools/prisma-loader>@graphql-tools/url-loader>@whatwg-node/fetch>undici": {
+      "decision": "ignore",
+      "madeAt": 1658748317436,
+      "expiresAt": 1661340308057
     }
   },
   "rules": {},
