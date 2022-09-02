@@ -12,7 +12,8 @@ import {
   useGetServiceMessagesQuery
 } from '../../../../../../services/api/strapi/generated/graphql';
 
-import { withAuth, Props as AuthProps } from '../../../../../../providers/auth';
+import { withAuth } from '../../../../../../providers/auth';
+import { authService } from '../../../../../../services/auth/auth-service';
 
 import withCatalogs, {
   Props as CatalogsProps
@@ -37,8 +38,7 @@ import SC from './styled';
 const { FDK_REGISTRATION_BASE_URI } = env;
 
 interface Props
-  extends AuthProps,
-    CatalogsProps,
+  extends CatalogsProps,
     ConceptCatalogsProps,
     DataServiceCatalogsProps,
     RecordCountsProps {}
@@ -52,8 +52,7 @@ const OverviewPage: FC<Props> = ({
   catalogsActions: { listCatalogsRequested: listCatalogs },
   conceptCatalogsActions: { conceptCatalogsRequested },
   dataServiceCatalogsActions: { dataServiceCatalogsRequested },
-  recordCountsActions: { recordCountsRequested },
-  authService
+  recordCountsActions: { recordCountsRequested }
 }) => {
   const { data } = useGetServiceMessagesQuery({
     variables: {
