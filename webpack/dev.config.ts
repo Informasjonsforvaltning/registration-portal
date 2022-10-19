@@ -8,9 +8,13 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import type { Configuration as WebpackConfiguration } from 'webpack';
-import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import type {
+  Configuration as WebpackDevServerConfiguration,
+  Middleware
+} from 'webpack-dev-server';
 
 import baseConfig from './base.config';
+import Server from 'webpack-dev-server';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -27,13 +31,18 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
     host: '0.0.0.0',
     port: 4301,
     hot: true,
-    onBeforeSetupMiddleware: devServer =>
-      devServer.app.get('/config.js', (_, res) => res.status(204).send()),
     historyApiFallback: {
       rewrites: [
         { from: /^\/auth/, to: '/auth.html' },
         { from: /./, to: '/index.html' }
       ]
+    },
+    setupMiddlewares: (middlewares: Middleware[], devServer: Server) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+      devServer?.app?.get('/config.js', (_, res) => res.status(204).send());
+      return middlewares;
     }
   },
   module: {
@@ -71,12 +80,9 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
         test: /\.svg$/,
         use: [
           {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'react-svg-loader',
+            loader: '@svgr/webpack',
             options: {
-              jsx: true
+              typescript: true
             }
           }
         ],
