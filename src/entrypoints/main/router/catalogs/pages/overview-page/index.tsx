@@ -8,7 +8,7 @@ import env from '../../../../../../env';
 
 import {
   Enum_Servicemessage_Environment,
-  ServiceMessage,
+  ServiceMessageEntity,
   useGetServiceMessagesQuery
 } from '../../../../../../services/api/strapi/generated/graphql';
 
@@ -62,7 +62,7 @@ const OverviewPage: FC<Props> = ({
         : Enum_Servicemessage_Environment.Production
     }
   });
-  const serviceMessages = data?.serviceMessages as ServiceMessage[];
+  const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
 
   const [isMounted, setIsMounted] = useState(false);
 
