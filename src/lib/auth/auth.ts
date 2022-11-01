@@ -71,7 +71,7 @@ export class Auth {
           username: (this.kc.tokenParsed as any).user_name,
           name: (this.kc.tokenParsed as any).name,
           fdkTerms: (this.kc.tokenParsed as any).fdk_terms,
-          orgTerms: (this.kc.tokenParsed as any).org_terms.split(',')
+          orgTerms: (this.kc.tokenParsed as any).org_terms?.split(',') ?? []
         }
       : {
           username: '',
