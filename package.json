@@ -96,7 +96,7 @@
     "regenerator-runtime": "^0.13.9",
     "sanitize-html": "^2.7.2",
     "showdown": "^1.9.1",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.6",
     "util": "^0.12.4"
   },
   "devDependencies": {
