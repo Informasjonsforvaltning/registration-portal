@@ -21,28 +21,26 @@ interface Props {
   history?: History;
 }
 
-const Router: FC<Props> = ({ history }) => {
-  const AppRouter: FC = ({ children }) =>
-    history ? (
-      <BaseRouter history={history}>{children}</BaseRouter>
-    ) : (
-      <BrowserRouter>{children}</BrowserRouter>
-    );
-
-  return (
-    <AppRouter>
-      <Header />
-      <Root>
-        <Suspense fallback={null}>
-          <Switch>
-            <Route path='/' component={routes.catalogs} />
-            <Redirect to='/' />
-          </Switch>
-        </Suspense>
-      </Root>
-      <Footer />
-    </AppRouter>
+const AppRouter: FC<Props> = ({ history, children }) =>
+  history ? (
+    <BaseRouter history={history}>{children}</BaseRouter>
+  ) : (
+    <BrowserRouter>{children}</BrowserRouter>
   );
-};
+
+const Router: FC<Props> = ({ history }) => (
+  <AppRouter history={history}>
+    <Header />
+    <Root>
+      <Suspense fallback={null}>
+        <Switch>
+          <Route path='/' component={routes.catalogs} />
+          <Redirect to='/' />
+        </Switch>
+      </Suspense>
+    </Root>
+    <Footer />
+  </AppRouter>
+);
 
 export default compose<FC>(memo)(Router);

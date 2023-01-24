@@ -14,10 +14,8 @@ const initialState = fromJS({
   isLoadingConceptCatalogs: false
 });
 
-export default function reducer(
-  state: any = initialState,
-  action: Actions<typeof actions>
-) {
+export default function reducer(state: any, action: Actions<typeof actions>) {
+  state = state ?? initialState;
   switch (action.type) {
     case CONCEPT_CATALOGS_REQUESTED:
       return state

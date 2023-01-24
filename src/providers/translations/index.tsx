@@ -1,8 +1,15 @@
-import React, { memo, FC, PropsWithChildren, useState, useEffect } from 'react';
+import React, {
+  memo,
+  FC,
+  PropsWithChildren,
+  useState,
+  useEffect,
+  useMemo
+} from 'react';
 import { compose } from 'redux';
 import { withCookies, ReactCookieProps } from 'react-cookie';
 
-import service, { Language } from '../../services/translations';
+import translationService, { Language } from '../../services/translations';
 
 import Context from './context';
 
@@ -34,20 +41,25 @@ const TranslationsProvider: FC<PropsWithChildren<Props>> = ({
   };
 
   const init = async () => {
-    await service.init(language, onChangeLanguage);
+    await translationService.init(language, onChangeLanguage);
 
     setIsInitialised(true);
   };
+
+  const service = useMemo(
+    () => ({
+      translationService
+    }),
+    [translationService]
+  );
 
   useEffect(() => {
     init();
   }, []);
 
   return isInitialised ? (
-    <Context.Provider value={{ service }}>{children}</Context.Provider>
-  ) : (
-    <></>
-  );
+    <Context.Provider value={service}>{children}</Context.Provider>
+  ) : null;
 };
 
 export default compose<FC>(memo, withCookies)(TranslationsProvider);

@@ -14,8 +14,6 @@ export const withTranslations =
   (props: any) =>
     (
       <Context.Consumer>
-        {({ service: translationsService }) => (
-          <Child {...props} translationsService={translationsService} />
-        )}
+        {() => <Child {...props} translationsService={service} />}
       </Context.Consumer>
     );

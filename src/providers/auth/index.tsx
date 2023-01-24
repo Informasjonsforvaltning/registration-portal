@@ -28,14 +28,12 @@ class AuthProvider extends PureComponent<Props, State> {
     this.setState({ instantiated: true });
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     const { children } = this.props;
     const { instantiated } = this.state;
     return instantiated ? (
       <AuthContext.Provider value={this.state}>{children}</AuthContext.Provider>
-    ) : (
-      <></>
-    );
+    ) : null;
   }
 }
 
