@@ -12,9 +12,9 @@ import type {
   Configuration as WebpackDevServerConfiguration,
   Middleware
 } from 'webpack-dev-server';
+import Server from 'webpack-dev-server';
 
 import baseConfig from './base.config';
-import Server from 'webpack-dev-server';
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;

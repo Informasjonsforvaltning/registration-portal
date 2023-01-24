@@ -14,10 +14,8 @@ const initialState = fromJS({
   isLoadingCatalogs: false
 });
 
-export default function reducer(
-  state: any = initialState,
-  action: Actions<typeof actions>
-) {
+export const reducer = (state: any, action: Actions<typeof actions>) => {
+  state = state ?? initialState;
   switch (action.type) {
     case LIST_CATALOGS_REQUESTED:
       return state.set('catalogs', fromJS([])).set('isLoadingCatalogs', true);
@@ -30,4 +28,6 @@ export default function reducer(
     default:
       return state;
   }
-}
+};
+
+export default reducer;

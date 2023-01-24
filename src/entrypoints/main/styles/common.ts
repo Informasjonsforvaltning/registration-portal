@@ -17,14 +17,11 @@ export default css`
   body {
     background: ${theme.colour(Colour.NEUTRAL, 'N10')};
     overflow-x: hidden;
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 
   body.no-scroll {
     overflow: hidden;
-  }
-
-  * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 
   footer.with-offset {

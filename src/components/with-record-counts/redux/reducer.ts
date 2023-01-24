@@ -14,10 +14,8 @@ const initialState = fromJS({
   isLoadingRecordCounts: false
 });
 
-export default function reducer(
-  state: any = initialState,
-  action: Actions<typeof actions>
-) {
+export default function reducer(state: any, action: Actions<typeof actions>) {
+  state = state ?? initialState;
   switch (action.type) {
     case RECORD_COUNTS_REQUESTED:
       return state
