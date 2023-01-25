@@ -212,7 +212,7 @@ const OverviewPage: FC<Props> = ({
                   <Translation id='catalogs.missingCatalogs.accessTitle' />
                 </strong>
                 <p>
-                  <a href='https://data.norge.no/about-registration'>
+                  <a href='https://www.altinn.no/skjemaoversikt/digitaliseringsdirektoratet/felles-datakatalog/'>
                     <Translation id='catalogs.missingCatalogs.accessText' />
                     <i className='fa fa-external-link fdk-fa-right' />
                   </a>
