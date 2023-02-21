@@ -51,7 +51,7 @@
     "loader-utils": "^2.0.4"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.4",
+    "@apollo/client": "^3.7.8",
     "@babel/runtime": "^7.20.13",
     "@fellesdatakatalog/alert": "^0.3.6",
     "@fellesdatakatalog/breadcrumbs": "^0.2.7",
@@ -70,7 +70,7 @@
     "font-awesome": "^4.7.0",
     "graphql": "^16.6.0",
     "immutable": "^4.2.2",
-    "keycloak-js": "^19.0.3",
+    "keycloak-js": "^20.0.3",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "react": "^17.0.2",
@@ -143,8 +143,8 @@
     "jest": "^27.5.1",
     "jest-styled-components": "^7.1.1",
     "jest-transformer-svg": "^1.0.2",
-    "lint-staged": "^11.2.5",
-    "mini-css-extract-plugin": "^2.6.1",
+    "lint-staged": "^13.1.2",
+    "mini-css-extract-plugin": "^2.7.2",
     "node-sass": "^7.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
