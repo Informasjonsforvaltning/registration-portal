@@ -49,7 +49,7 @@ const Header: FC<Props> = ({ translationsService }) => {
           : ''
       }
     >
-      <Link href={`${FDK_REGISTRATION_BASE_URI}`}>Registrere data</Link>
+      <Link href={FDK_REGISTRATION_BASE_URI}>Registrere data</Link>
       <Link href={ADMIN_GUI_BASE_URI}>Høste data</Link>
       <Link href={FDK_COMMUNITY_BASE_URI} external>
         Datalandsbyen
