@@ -17,7 +17,8 @@ const {
   FDK_BASE_URI,
   ADMIN_GUI_BASE_URI,
   SKE_THEME_PROFILE,
-  FDK_COMMUNITY_BASE_URI
+  FDK_COMMUNITY_BASE_URI,
+  FDK_REGISTRATION_BASE_URI
 } = env;
 
 interface Props extends TranslationsProps {}
@@ -48,7 +49,7 @@ const Header: FC<Props> = ({ translationsService }) => {
           : ''
       }
     >
-      <Link href={`${FDK_BASE_URI}/guidance`}>Registrere data</Link>
+      <Link href={FDK_REGISTRATION_BASE_URI}>Registrere data</Link>
       <Link href={ADMIN_GUI_BASE_URI}>Høste data</Link>
       <Link href={FDK_COMMUNITY_BASE_URI} external>
         Datalandsbyen
