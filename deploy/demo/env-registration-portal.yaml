@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: registration-portal
   labels:
-    app: registration-portal
+    fdk.service: registration-portal
 spec:
   template:
     spec:

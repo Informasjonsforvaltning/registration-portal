@@ -4,18 +4,18 @@ kind: Deployment
 metadata:
   name: registration-portal
   labels:
-    app: registration-portal
+    fdk.service: registration-portal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: registration-portal
+      fdk.service: registration-portal
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: registration-portal
+        fdk.service: registration-portal
       annotations:
         prometheus.io/scrape: "false"
     spec:

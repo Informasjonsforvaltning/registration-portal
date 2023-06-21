@@ -5,7 +5,7 @@ metadata:
   name: registration-portal
 spec:
   selector:
-    app: registration-portal
+    fdk.service: registration-portal
   ports:
     - name: http
       protocol: TCP
