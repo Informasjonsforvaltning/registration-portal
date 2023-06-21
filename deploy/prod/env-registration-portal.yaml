@@ -14,71 +14,71 @@ spec:
           - name: NAMESPACE
             valueFrom:
               secretKeyRef:
-                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: common-prod
                 key: NAMESPACE
           - name: FDK_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: FDK_BASE_URI
           - name: SSO_HOST
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: SSO_BASE_URI
           - name: FDK_REGISTRATION_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: FDK_REGISTRATION_BASE_URI
           - name: CONCEPT_CATALOG_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: CONCEPT_CATALOG_BASE_URI
           - name: DATASET_CATALOG_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: DATASET_CATALOG_BASE_URI
           - name: CONCEPT_REGISTRATION_HOST
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: CONCEPT_CATALOGUE_GUI_BASE_URI
           - name: RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
           - name: DATASERVICE_CATALOG_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: DATASERVICE_CATALOG_BASE_URI
           - name: SKE_THEME_PROFILE
             valueFrom:
               secretKeyRef:
-                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: common-prod
                 key: SKE_THEME_PROFILE
           - name: FDK_COMMUNITY_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: FDK_COMMUNITY_BASE_URI
           - name: ADMIN_GUI_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: ADMIN_GUI_BASE_URI
           - name: FDK_CMS_BASE_URI
             valueFrom:
               secretKeyRef:
-                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: commonurl-prod
                 key: FDK_CMS_BASE_URI
           - name: USE_DEMO_LOGO
             valueFrom:
               secretKeyRef:
-                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                name: common-prod
                 key: USE_DEMO_LOGO
                 optional: true
