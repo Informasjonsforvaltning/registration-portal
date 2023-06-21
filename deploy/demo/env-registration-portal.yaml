@@ -1,0 +1,84 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-portal
+  labels:
+    app: registration-portal
+spec:
+  template:
+    spec:
+      containers:
+        - name: registration-portal
+          env:
+          - name: NAMESPACE
+            valueFrom:
+              secretKeyRef:
+                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: NAMESPACE
+          - name: FDK_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: FDK_BASE_URI
+          - name: SSO_HOST
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: SSO_BASE_URI
+          - name: FDK_REGISTRATION_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: FDK_REGISTRATION_BASE_URI
+          - name: CONCEPT_CATALOG_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: CONCEPT_CATALOG_BASE_URI
+          - name: DATASET_CATALOG_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: DATASET_CATALOG_BASE_URI
+          - name: CONCEPT_REGISTRATION_HOST
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: CONCEPT_CATALOGUE_GUI_BASE_URI
+          - name: RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
+          - name: DATASERVICE_CATALOG_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: DATASERVICE_CATALOG_BASE_URI
+          - name: SKE_THEME_PROFILE
+            valueFrom:
+              secretKeyRef:
+                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: SKE_THEME_PROFILE
+          - name: FDK_COMMUNITY_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: FDK_COMMUNITY_BASE_URI
+          - name: ADMIN_GUI_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: ADMIN_GUI_BASE_URI
+          - name: FDK_CMS_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: FDK_CMS_BASE_URI
+          - name: USE_DEMO_LOGO
+            valueFrom:
+              secretKeyRef:
+                name: common-{{ required "Missing value NAMESPACE" .Values.NAMESPACE }}
+                key: USE_DEMO_LOGO
+                optional: true

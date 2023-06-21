@@ -7,22 +7,33 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy-production:
-    name: Deploy to prod on merge to main branch
-    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy.yaml@main
+  build-prod:
+    name: Build when pull request is created
+    uses: Informasjonsforvaltning/workflows/.github/workflows/build-push.yaml@main
+    with:
+      app_name: registration-portal
+      environment: prod
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
+      DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_PROD_AUTODEPLOY }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  deploy-prod:
+    name: Deploy to prod environment
+    needs: build-prod
+    uses: Informasjonsforvaltning/workflows/.github/workflows/kustomize-deploy.yaml@main
     with:
       app_name: registration-portal
       environment: prod
       cluster: digdir-fdk-prod
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
       DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_PROD_AUTODEPLOY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      DEPENDABOT_SLACK_WEBHOOK_URL: ${{ secrets.DEPENDABOT_SLACK_WEBHOOK_URL }}
 
-  deploy-to-demo:
-    needs: build-and-deploy-production
+  deploy-demo:
+    needs: deploy-prod
     name: Deploy to demo if prod-deploy is successful
     uses: Informasjonsforvaltning/workflows/.github/workflows/deploy.yaml@main
     with:
@@ -33,4 +44,3 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      DEPENDABOT_SLACK_WEBHOOK_URL: ${{ secrets.DEPENDABOT_SLACK_WEBHOOK_URL }}
