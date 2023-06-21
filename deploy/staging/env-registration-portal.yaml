@@ -35,7 +35,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: commonurl-staging
-                key: CONCEPT_CATALOG_FRONTEND
+                key: CONCEPT_CATALOG_BASE_URI
           - name: DATASET_CATALOG_BASE_URI
             valueFrom:
               secretKeyRef:
@@ -45,7 +45,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: commonurl-staging
-                key: CONCEPT_CATALOGUE_GUI_BASE_URI
+                key: CONCEPT_CATALOG_FRONTEND
           - name: RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
             valueFrom:
               secretKeyRef:
