@@ -8,12 +8,11 @@ on:
 
 jobs:
   run-tests:
+    name: Run tests
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [ 14.17.5 ]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,24 +28,34 @@ jobs:
         env:
           CI: true
 
-  build-and-deploy-staging:
-    name: Call reusable workflow when pull request is created
+  build-staging:
+    name: Build when pull request is created
     needs: run-tests
-    if: github.event.pull_request.draft == false
-    uses: Informasjonsforvaltning/workflows/.github/workflows/build-deploy.yaml@main
+    if: ${{ github.actor != 'dependabot[bot]' && github.event.pull_request.draft == false }}
+    uses: Informasjonsforvaltning/workflows/.github/workflows/build-push.yaml@main
+    with:
+      app_name: registration-portal
+      environment: staging
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
+
+  deploy-staging:
+    name: Deploy to staging environment
+    needs: [run-tests, build-staging]
+    uses: Informasjonsforvaltning/workflows/.github/workflows/kustomize-deploy.yaml@main
     with:
       app_name: registration-portal
       environment: staging
       cluster: digdir-fdk-dev
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GCP_SA_DIGDIR_FDK_GCR_KEY: ${{ secrets.GCP_SA_DIGDIR_FDK_GCR_KEY }}
       DIGDIR_FDK_AUTODEPLOY: ${{ secrets.DIGDIR_FDK_DEV_AUTODEPLOY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      DEPENDABOT_SLACK_WEBHOOK_URL: ${{ secrets.DEPENDABOT_SLACK_WEBHOOK_URL }}
 
   build-dev-image:
     name: Build and test dev image on PR from dependabot
+    needs: run-tests
     if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
     uses: Informasjonsforvaltning/workflows/.github/workflows/build.yaml@main
     with:

@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-portal
+  labels:
+    fdk.service: registration-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      fdk.service: registration-portal
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        fdk.service: registration-portal
+      annotations:
+        prometheus.io/scrape: "false"
+    spec:
+      containers:
+        - name: registration-portal
+          image: registration-portal
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+          resources:
+            requests:
+              memory: 10Mi
