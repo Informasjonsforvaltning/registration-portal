@@ -68,7 +68,7 @@
     "core-js": "^3.22.4",
     "designsystemet": "git+https://git@github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
     "font-awesome": "^4.7.0",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "immutable": "^4.2.2",
     "keycloak-js": "^20.0.3",
     "path-browserify": "^1.0.1",
