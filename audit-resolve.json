@@ -264,6 +264,11 @@
       "decision": "ignore",
       "madeAt": 1660917065213,
       "expiresAt": 1663509059730
+    },
+    "1092972|node-sass>request": {
+      "decision": "ignore",
+      "madeAt": 1698390545717,
+      "expiresAt": 1700982535531
     }
   },
   "rules": {},
