@@ -33,7 +33,7 @@ jobs:
   deploy-demo:
     needs: deploy-prod
     name: Deploy to demo if prod-deploy is successful
-    uses: Informasjonsforvaltning/workflows/.github/workflows/deploy.yaml@main
+    uses: Informasjonsforvaltning/workflows/.github/workflows/kustomize-deploy.yaml@main
     with:
       app_name: registration-portal
       environment: demo
