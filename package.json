@@ -48,7 +48,9 @@
   "resolutions": {
     "ansi-regex": "^5.0.1",
     "json5": "^1.0.2",
-    "loader-utils": "^2.0.4"
+    "loader-utils": "^2.0.4",
+    "semver": "^7.5.4",
+    "tough-cookie": "^4.1.3"
   },
   "dependencies": {
     "@apollo/client": "^3.7.8",
@@ -68,7 +70,7 @@
     "core-js": "^3.22.4",
     "designsystemet": "git+https://git@github.com/Informasjonsforvaltning/designsystemet.git#1.4.25",
     "font-awesome": "^4.7.0",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "immutable": "^4.2.2",
     "keycloak-js": "^20.0.3",
     "path-browserify": "^1.0.1",
@@ -89,7 +91,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.18.6",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
@@ -114,7 +116,7 @@
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
-    "babel-loader": "^9.1.2",
+    "babel-loader": "^9.1.3",
     "babel-plugin-styled-components": "^2.0.7",
     "commitizen": "^4.2.5",
     "copy-webpack-plugin": "^11.0.0",
@@ -157,7 +159,7 @@
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4",
-    "webpack": "^5.75.0",
+    "webpack": "^5.89.0",
     "webpack-bundle-analyzer": "^4.7.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
