@@ -18,7 +18,8 @@ const {
   ADMIN_GUI_BASE_URI,
   SKE_THEME_PROFILE,
   FDK_COMMUNITY_BASE_URI,
-  FDK_REGISTRATION_BASE_URI
+  FDK_REGISTRATION_BASE_URI,
+  CATALOG_ADMIN_BASE_URI
 } = env;
 
 interface Props extends TranslationsProps {}
@@ -37,6 +38,15 @@ const Header: FC<Props> = ({ translationsService }) => {
     ? ThemeProfile.SKE
     : ThemeProfile.FDK;
 
+  const showManageConceptCatalogsUrl = () => {
+    const resourceRoles = authService.getResourceRoles();
+
+    return resourceRoles.some(role => {
+      const orgNumber = role?.resourceId;
+      return authService.hasOrganizationAdminPermission(orgNumber);
+    });
+  };
+
   return (
     <HeaderBase
       themeProfile={themeProfile}
@@ -48,6 +58,8 @@ const Header: FC<Props> = ({ translationsService }) => {
           ? translationsService.translate('dataCatalogs')
           : ''
       }
+      showManageConceptCatalogsUrl={showManageConceptCatalogsUrl()}
+      manageConceptCatalogsUrl={CATALOG_ADMIN_BASE_URI}
     >
       <Link href={FDK_REGISTRATION_BASE_URI}>Registrere data</Link>
       <Link href={ADMIN_GUI_BASE_URI}>Høste data</Link>
