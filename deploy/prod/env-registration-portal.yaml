@@ -76,6 +76,11 @@ spec:
               secretKeyRef:
                 name: commonurl-prod
                 key: FDK_CMS_BASE_URI
+          - name: CATALOG_ADMIN_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-prod
+                key: CATALOG_ADMIN_BASE_URI
           - name: USE_DEMO_LOGO
             valueFrom:
               secretKeyRef:

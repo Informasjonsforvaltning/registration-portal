@@ -11,6 +11,7 @@ export interface EnvironmentVariables {
   CONCEPT_REGISTRATION_HOST: string;
   CONCEPT_CATALOG_BASE_URI: string;
   DATASET_CATALOG_BASE_URI: string;
+  CATALOG_ADMIN_BASE_URI: string;
   RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI: string;
   FDK_COMMUNITY_BASE_URI: string;
   FDK_CMS_BASE_URI: string;
