@@ -8,6 +8,7 @@ import CatalogItem from '../catalog-item';
 const {
   FDK_REGISTRATION_BASE_URI,
   DATASERVICE_CATALOG_BASE_URI,
+  SERVICE_CATALOG_GUI_BASE_URI,
   CONCEPT_REGISTRATION_HOST,
   RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI
 } = env;
@@ -39,6 +40,12 @@ const Catalog: FC<Props> = ({
       }
       case 'protocol': {
         return `${RECORDS_OF_PROCESSING_ACTIVITIES_BASE_URI}/${catalogId}`;
+      }
+      case 'services': {
+        return `${SERVICE_CATALOG_GUI_BASE_URI}/catalogs/${catalogId}/${type}`;
+      }
+      case 'public-services': {
+        return `${SERVICE_CATALOG_GUI_BASE_URI}/catalogs/${catalogId}/${type}`;
       }
       default:
         return `${FDK_REGISTRATION_BASE_URI}/catalogs/${catalogId}/${type}`;

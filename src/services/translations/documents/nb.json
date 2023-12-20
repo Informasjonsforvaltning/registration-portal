@@ -13,11 +13,19 @@
     "dataservices": "API-katalog",
     "concepts": "Begrepskatalog",
     "protocol": "Behandlingsoversikt",
+    "services": "Tjenestekatalog",
+    "public-services": "Tjenestekatalog",
     "type": {
       "datasets": "datasettbeskrivelser",
       "dataservices": "API-beskrivelser",
       "concepts": "begreper",
-      "protocol": "behandlingsaktiviteter"
+      "protocol": "behandlingsaktiviteter",
+      "services": "tjenestebeskrivelser",
+      "public-services": "tjenestebeskrivelser"
+    },
+    "subtitle": {
+      "services": "Tjenester",
+      "public-services": "Offentlige tjenester"
     }
   },
   "noAccessCatalog": "Du har ikke tilgang til denne katalogen",

@@ -5,6 +5,7 @@ import DatasetSVG from '../../images/icon-catalog-dataset-lg.svg';
 import DataServiceSVG from '../../images/icon-catalog-api-lg.svg';
 import ConceptSVG from '../../images/icon-catalog-concept-lg.svg';
 import ProtocolSVG from '../../images/icon-catalog-protocol-xl.svg';
+import ServiceSVG from '../../images/icon-catalog-service-lg.svg';
 
 const DatasetIcon = styled(DatasetSVG)`
   height: 40px;
@@ -34,6 +35,13 @@ const ProtocolIcon = styled(ProtocolSVG)`
   min-width: 40px;
 `;
 
+const ServiceIcon = styled(ServiceSVG)`
+  height: 40px;
+  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
+`;
+
 const Title = styled.h3`
   margin-top: ${theme.spacing('S10')};
   margin-bottom: ${theme.spacing('S4')};
@@ -46,5 +54,6 @@ export default {
   DataServiceIcon,
   ConceptIcon,
   ProtocolIcon,
+  ServiceIcon,
   Title
 };

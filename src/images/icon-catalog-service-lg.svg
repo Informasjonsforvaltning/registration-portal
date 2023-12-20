@@ -1,0 +1,17 @@
+<svg width="39" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden">
+  <g transform="translate(-693 -340)">
+    <g>
+      <g>
+        <g>
+          <g>
+            <path d="M699.938 344.562 726.062 344.562C727.369 344.562 728.438 345.631 728.438 346.938L728.438 354.062 697.562 354.062 697.562 346.938C697.562 345.631 698.631 344.562 699.938 344.562Z" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" fill="none" fill-rule="nonzero"/>
+            <path d="M697.562 354.062 728.438 354.062 728.438 373.062C728.438 374.369 727.369 375.438 726.062 375.438L699.938 375.438C698.631 375.438 697.562 374.369 697.562 373.062L697.562 354.062Z" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" fill="none" fill-rule="nonzero"/>
+            <path d="M704.688 361.188 721.312 361.188" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" fill="none" fill-rule="nonzero"/>
+            <path d="M721.312 349.312 723.688 349.312" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" fill="none" fill-rule="nonzero"/>
+            <path d="M704.688 368.312 721.312 368.312" stroke="black" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" fill="none" fill-rule="nonzero"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

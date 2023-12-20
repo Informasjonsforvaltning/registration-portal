@@ -35,6 +35,10 @@ const CatalogItem: FC<Props> = ({
         return <SC.ConceptIcon />;
       case 'protocol':
         return <SC.ProtocolIcon />;
+      case 'services':
+        return <SC.ServiceIcon />;
+      case 'public-services':
+        return <SC.ServiceIcon />;
       default:
         return null;
     }
@@ -61,6 +65,12 @@ const CatalogItem: FC<Props> = ({
             <SC.Title>
               <Translation id={`catalogs.${type}`} />
             </SC.Title>
+            {(type === 'services' || type === 'public-services') && (
+              <h4>
+                <Translation id={`catalogs.subtitle.${type}`} />
+              </h4>
+            )}
+            {type === 'protocol' && <hr />}
             <span className='fdk-text-size-small fdk-color-neutral-dark'>
               {itemsCount || <Translation id='none' />}{' '}
               <Translation id={`catalogs.type.${type}`} />
@@ -75,6 +85,12 @@ const CatalogItem: FC<Props> = ({
             <SC.Title>
               <Translation id={`catalogs.${type}`} />
             </SC.Title>
+            {(type === 'services' || type === 'public-services') && (
+              <h4>
+                <Translation id={`catalogs.subtitle.${type}`} />
+              </h4>
+            )}
+            {type === 'protocol' && <hr />}
             <span className='fdk-text-size-small fdk-color-neutral-dark'>
               {itemsCount || <Translation id='none' />}{' '}
               <Translation id={`catalogs.type.${type}`} />
