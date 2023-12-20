@@ -24,6 +24,9 @@ import withConceptCatalogs, {
 import withDataServiceCatalogs, {
   Props as DataServiceCatalogsProps
 } from '../../../../../../components/with-dataservice-catalogs';
+import withServiceCatalogs, {
+  Props as ServiceCatalogProps
+} from '../../../../../../components/with-service-catalogs';
 import withRecordCounts, {
   Props as RecordCountsProps
 } from '../../../../../../components/with-record-counts';
@@ -41,17 +44,20 @@ interface Props
   extends CatalogsProps,
     ConceptCatalogsProps,
     DataServiceCatalogsProps,
+    ServiceCatalogProps,
     RecordCountsProps {}
 
 const OverviewPage: FC<Props> = ({
   catalogs,
   conceptCatalogs,
   dataServiceCatalogs,
+  serviceCatalogs,
   recordCounts,
   isLoadingCatalogs,
   catalogsActions: { listCatalogsRequested: listCatalogs },
   conceptCatalogsActions: { conceptCatalogsRequested },
   dataServiceCatalogsActions: { dataServiceCatalogsRequested },
+  serviceCatalogsActions: { serviceCatalogsRequested },
   recordCountsActions: { recordCountsRequested }
 }) => {
   const { data } = useGetServiceMessagesQuery({
@@ -71,6 +77,7 @@ const OverviewPage: FC<Props> = ({
     conceptCatalogsRequested();
     dataServiceCatalogsRequested();
     recordCountsRequested();
+    serviceCatalogsRequested();
 
     setIsMounted(true);
 
@@ -96,6 +103,20 @@ const OverviewPage: FC<Props> = ({
       catalog => catalog.id === catalogId
     );
     return dataServiceCatalog?.dataServiceCount || 0;
+  };
+
+  const serviceCatalogSize = (catalogId: string) => {
+    const serviceCatalog = serviceCatalogs?.find(
+      catalog => catalog.catalogId === catalogId
+    );
+    return serviceCatalog?.serviceCount || 0;
+  };
+
+  const publicServiceCatalogSize = (catalogId: string) => {
+    const serviceCatalog = serviceCatalogs?.find(
+      catalog => catalog.catalogId === catalogId
+    );
+    return serviceCatalog?.publicServiceCount || 0;
   };
 
   const organizationRecordCount = (organizationId: string) => {
@@ -185,6 +206,26 @@ const OverviewPage: FC<Props> = ({
                   }
                 />
                 <Catalog
+                  key={`services-${id}`}
+                  catalogId={id}
+                  type='services'
+                  itemsCount={serviceCatalogSize(id)}
+                  disabled={
+                    !authService.hasSystemAdminPermission() &&
+                    !hasAcceptedTerms(id)
+                  }
+                />
+                <Catalog
+                  key={`public-services-${id}`}
+                  catalogId={id}
+                  type='public-services'
+                  itemsCount={publicServiceCatalogSize(id)}
+                  disabled={
+                    !authService.hasSystemAdminPermission() &&
+                    !hasAcceptedTerms(id)
+                  }
+                />
+                <Catalog
                   key={`protocol-${id}`}
                   catalogId={id}
                   type='protocol'
@@ -232,5 +273,6 @@ export default compose<FC>(
   withCatalogs,
   withConceptCatalogs,
   withDataServiceCatalogs,
+  withServiceCatalogs,
   withRecordCounts
 )(OverviewPage);
