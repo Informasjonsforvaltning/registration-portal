@@ -267,8 +267,13 @@
     },
     "1092972|node-sass>request": {
       "decision": "ignore",
-      "madeAt": 1698390545717,
-      "expiresAt": 1700982535531
+      "madeAt": 1703078242216,
+      "expiresAt": 1705670195195
+    },
+    "1094889|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1703078255280,
+      "expiresAt": 1705670195195
     }
   },
   "rules": {},
