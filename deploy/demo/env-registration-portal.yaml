@@ -81,6 +81,16 @@ spec:
               secretKeyRef:
                 name: commonurl-demo
                 key: CATALOG_ADMIN_BASE_URI
+          - name: SERVICE_CATALOG_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-demo
+                key: SERVICE_CATALOG_BASE_URI
+          - name: SERVICE_CATALOG_GUI_BASE_URI
+            valueFrom:
+              secretKeyRef:
+                name: commonurl-demo
+                key: SERVICE_CATALOG_GUI_BASE_URI
           - name: USE_DEMO_LOGO
             valueFrom:
               secretKeyRef:
