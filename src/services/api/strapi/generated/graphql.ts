@@ -23,6 +23,7 @@ export type Scalars = {
   FancyArticleContentDynamicZoneInput: any;
   I18NLocaleCode: any;
   JSON: any;
+  TransportArticleContentDynamicZoneInput: any;
   Upload: any;
 };
 
@@ -105,6 +106,7 @@ export type BooleanFilterInput = {
   lt?: InputMaybe<Scalars["Boolean"]>;
   lte?: InputMaybe<Scalars["Boolean"]>;
   ne?: InputMaybe<Scalars["Boolean"]>;
+  nei?: InputMaybe<Scalars["Boolean"]>;
   not?: InputMaybe<BooleanFilterInput>;
   notContains?: InputMaybe<Scalars["Boolean"]>;
   notContainsi?: InputMaybe<Scalars["Boolean"]>;
@@ -136,6 +138,12 @@ export type ComponentBasicQuote = {
   id: Scalars["ID"];
 };
 
+export type ComponentBasicYoutube = {
+  __typename?: "ComponentBasicYoutube";
+  id: Scalars["ID"];
+  url?: Maybe<Scalars["String"]>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -150,6 +158,7 @@ export type DateTimeFilterInput = {
   lt?: InputMaybe<Scalars["DateTime"]>;
   lte?: InputMaybe<Scalars["DateTime"]>;
   ne?: InputMaybe<Scalars["DateTime"]>;
+  nei?: InputMaybe<Scalars["DateTime"]>;
   not?: InputMaybe<DateTimeFilterInput>;
   notContains?: InputMaybe<Scalars["DateTime"]>;
   notContainsi?: InputMaybe<Scalars["DateTime"]>;
@@ -168,6 +177,7 @@ export enum Enum_Componentbasicimage_Style {
 }
 
 export enum Enum_Servicemessage_Environment {
+  Demo = "demo",
   Production = "production",
   Staging = "staging",
 }
@@ -272,6 +282,7 @@ export type FloatFilterInput = {
   lt?: InputMaybe<Scalars["Float"]>;
   lte?: InputMaybe<Scalars["Float"]>;
   ne?: InputMaybe<Scalars["Float"]>;
+  nei?: InputMaybe<Scalars["Float"]>;
   not?: InputMaybe<FloatFilterInput>;
   notContains?: InputMaybe<Scalars["Float"]>;
   notContainsi?: InputMaybe<Scalars["Float"]>;
@@ -287,9 +298,11 @@ export type GenericMorph =
   | ComponentBasicImage
   | ComponentBasicParagraph
   | ComponentBasicQuote
+  | ComponentBasicYoutube
   | FancyArticle
   | I18NLocale
   | ServiceMessage
+  | TransportArticle
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
@@ -346,6 +359,7 @@ export type IdFilterInput = {
   lt?: InputMaybe<Scalars["ID"]>;
   lte?: InputMaybe<Scalars["ID"]>;
   ne?: InputMaybe<Scalars["ID"]>;
+  nei?: InputMaybe<Scalars["ID"]>;
   not?: InputMaybe<IdFilterInput>;
   notContains?: InputMaybe<Scalars["ID"]>;
   notContainsi?: InputMaybe<Scalars["ID"]>;
@@ -370,6 +384,7 @@ export type IntFilterInput = {
   lt?: InputMaybe<Scalars["Int"]>;
   lte?: InputMaybe<Scalars["Int"]>;
   ne?: InputMaybe<Scalars["Int"]>;
+  nei?: InputMaybe<Scalars["Int"]>;
   not?: InputMaybe<IntFilterInput>;
   notContains?: InputMaybe<Scalars["Int"]>;
   notContainsi?: InputMaybe<Scalars["Int"]>;
@@ -394,6 +409,7 @@ export type JsonFilterInput = {
   lt?: InputMaybe<Scalars["JSON"]>;
   lte?: InputMaybe<Scalars["JSON"]>;
   ne?: InputMaybe<Scalars["JSON"]>;
+  nei?: InputMaybe<Scalars["JSON"]>;
   not?: InputMaybe<JsonFilterInput>;
   notContains?: InputMaybe<Scalars["JSON"]>;
   notContainsi?: InputMaybe<Scalars["JSON"]>;
@@ -414,6 +430,8 @@ export type Mutation = {
   createFancyArticleLocalization?: Maybe<FancyArticleEntityResponse>;
   createServiceMessage?: Maybe<ServiceMessageEntityResponse>;
   createServiceMessageLocalization?: Maybe<ServiceMessageEntityResponse>;
+  createTransportArticle?: Maybe<TransportArticleEntityResponse>;
+  createTransportArticleLocalization?: Maybe<TransportArticleEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -423,6 +441,7 @@ export type Mutation = {
   deleteArticle?: Maybe<ArticleEntityResponse>;
   deleteFancyArticle?: Maybe<FancyArticleEntityResponse>;
   deleteServiceMessage?: Maybe<ServiceMessageEntityResponse>;
+  deleteTransportArticle?: Maybe<TransportArticleEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -444,6 +463,7 @@ export type Mutation = {
   updateFancyArticle?: Maybe<FancyArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateServiceMessage?: Maybe<ServiceMessageEntityResponse>;
+  updateTransportArticle?: Maybe<TransportArticleEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -492,6 +512,17 @@ export type MutationCreateServiceMessageLocalizationArgs = {
   locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
+export type MutationCreateTransportArticleArgs = {
+  data: TransportArticleInput;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
+export type MutationCreateTransportArticleLocalizationArgs = {
+  data?: InputMaybe<TransportArticleInput>;
+  id?: InputMaybe<Scalars["ID"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
@@ -519,6 +550,11 @@ export type MutationDeleteFancyArticleArgs = {
 };
 
 export type MutationDeleteServiceMessageArgs = {
+  id: Scalars["ID"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
+export type MutationDeleteTransportArticleArgs = {
   id: Scalars["ID"];
   locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
@@ -595,6 +631,12 @@ export type MutationUpdateServiceMessageArgs = {
   locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
 };
 
+export type MutationUpdateTransportArticleArgs = {
+  data: TransportArticleInput;
+  id: Scalars["ID"];
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars["ID"];
@@ -654,6 +696,8 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   serviceMessage?: Maybe<ServiceMessageEntityResponse>;
   serviceMessages?: Maybe<ServiceMessageEntityResponseCollection>;
+  transportArticle?: Maybe<TransportArticleEntityResponse>;
+  transportArticles?: Maybe<TransportArticleEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -707,6 +751,19 @@ export type QueryServiceMessageArgs = {
 
 export type QueryServiceMessagesArgs = {
   filters?: InputMaybe<ServiceMessageFiltersInput>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type QueryTransportArticleArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+  locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
+};
+
+export type QueryTransportArticlesArgs = {
+  filters?: InputMaybe<TransportArticleFiltersInput>;
   locale?: InputMaybe<Scalars["I18NLocaleCode"]>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
@@ -856,6 +913,7 @@ export type StringFilterInput = {
   lt?: InputMaybe<Scalars["String"]>;
   lte?: InputMaybe<Scalars["String"]>;
   ne?: InputMaybe<Scalars["String"]>;
+  nei?: InputMaybe<Scalars["String"]>;
   not?: InputMaybe<StringFilterInput>;
   notContains?: InputMaybe<Scalars["String"]>;
   notContainsi?: InputMaybe<Scalars["String"]>;
@@ -864,6 +922,77 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   startsWith?: InputMaybe<Scalars["String"]>;
+};
+
+export type TransportArticle = {
+  __typename?: "TransportArticle";
+  Content?: Maybe<Array<Maybe<TransportArticleContentDynamicZone>>>;
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  locale?: Maybe<Scalars["String"]>;
+  localizations?: Maybe<TransportArticleRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars["DateTime"]>;
+  subtitle?: Maybe<Scalars["String"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type TransportArticleLocalizationsArgs = {
+  filters?: InputMaybe<TransportArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type TransportArticleContentDynamicZone =
+  | ComponentBasicImage
+  | ComponentBasicParagraph
+  | ComponentBasicQuote
+  | ComponentBasicYoutube
+  | Error;
+
+export type TransportArticleEntity = {
+  __typename?: "TransportArticleEntity";
+  attributes?: Maybe<TransportArticle>;
+  id?: Maybe<Scalars["ID"]>;
+};
+
+export type TransportArticleEntityResponse = {
+  __typename?: "TransportArticleEntityResponse";
+  data?: Maybe<TransportArticleEntity>;
+};
+
+export type TransportArticleEntityResponseCollection = {
+  __typename?: "TransportArticleEntityResponseCollection";
+  data: Array<TransportArticleEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type TransportArticleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<TransportArticleFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<TransportArticleFiltersInput>;
+  not?: InputMaybe<TransportArticleFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<TransportArticleFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  subtitle?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type TransportArticleInput = {
+  Content?: InputMaybe<
+    Array<Scalars["TransportArticleContentDynamicZoneInput"]>
+  >;
+  publishedAt?: InputMaybe<Scalars["DateTime"]>;
+  subtitle?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+};
+
+export type TransportArticleRelationResponseCollection = {
+  __typename?: "TransportArticleRelationResponseCollection";
+  data: Array<TransportArticleEntity>;
 };
 
 export type UploadFile = {
