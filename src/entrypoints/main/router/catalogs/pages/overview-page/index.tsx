@@ -60,12 +60,17 @@ const OverviewPage: FC<Props> = ({
   serviceCatalogsActions: { serviceCatalogsRequested },
   recordCountsActions: { recordCountsRequested }
 }) => {
+  let serviceMessageEnv = Enum_Servicemessage_Environment.Production;
+  if (window.location.hostname.match('localhost|staging')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Staging;
+  }
+  if (window.location.hostname.match('demo')) {
+    serviceMessageEnv = Enum_Servicemessage_Environment.Demo;
+  }
   const { data } = useGetServiceMessagesQuery({
     variables: {
       today: new Date(new Date().toUTCString()),
-      env: window.location.hostname.match('localhost|staging')
-        ? Enum_Servicemessage_Environment.Staging
-        : Enum_Servicemessage_Environment.Production
+      env: serviceMessageEnv
     }
   });
   const serviceMessages = data?.serviceMessages?.data as ServiceMessageEntity[];
