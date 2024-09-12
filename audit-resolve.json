@@ -284,6 +284,61 @@
       "decision": "ignore",
       "madeAt": 1714032922300,
       "expiresAt": 1716624858874
+    },
+    "1098392|@graphql-codegen/cli>@graphql-tools/url-loader>@graphql-tools/executor-graphql-ws>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136704774,
+      "expiresAt": 1728728678634
+    },
+    "1098392|@graphql-codegen/cli>@graphql-tools/prisma-loader>@graphql-tools/url-loader>@graphql-tools/executor-graphql-ws>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136704774,
+      "expiresAt": 1728728678634
+    },
+    "1098392|@graphql-codegen/cli>@graphql-tools/url-loader>@graphql-tools/executor-legacy-ws>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136704774,
+      "expiresAt": 1728728678634
+    },
+    "1098392|@graphql-codegen/cli>@graphql-tools/prisma-loader>@graphql-tools/url-loader>@graphql-tools/executor-legacy-ws>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136704774,
+      "expiresAt": 1728728678634
+    },
+    "1098393|jest>@jest/core>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136707689,
+      "expiresAt": 1728728678634
+    },
+    "1098393|jest>jest-cli>@jest/core>jest-config>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136707689,
+      "expiresAt": 1728728678634
+    },
+    "1098393|jest>jest-cli>@jest/core>jest-config>jest-runner>jest-environment-jsdom>jsdom>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136707689,
+      "expiresAt": 1728728678634
+    },
+    "1097679|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1726136710842,
+      "expiresAt": 1728728678634
+    },
+    "1098393|webpack-bundle-analyzer>ws": {
+      "decision": "ignore",
+      "madeAt": 1726136714670,
+      "expiresAt": 1728728678634
+    },
+    "1099357|node-sass>make-fetch-happen>socks-proxy-agent>socks>ip": {
+      "decision": "ignore",
+      "madeAt": 1726136717667,
+      "expiresAt": 1728728678634
+    },
+    "1099357|node-sass>node-gyp>make-fetch-happen>socks-proxy-agent>socks>ip": {
+      "decision": "ignore",
+      "madeAt": 1726136717667,
+      "expiresAt": 1728728678634
     }
   },
   "rules": {},
